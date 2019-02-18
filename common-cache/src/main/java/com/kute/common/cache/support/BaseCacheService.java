@@ -3,6 +3,7 @@ package com.kute.common.cache.support;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.*;
 import org.springframework.data.redis.serializer.RedisSerializer;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Set;
@@ -11,6 +12,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * created by bailong001 on 2018/10/08 18:22
  */
+@Component
 public class BaseCacheService {
 
 

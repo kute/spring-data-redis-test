@@ -5,7 +5,7 @@ spring:
     type: REDIS_CLUSTER
     clientType: LETTUCE
     lettucecluster:
-      nodes: 172.30.13.76:6380,172.30.13.76:6381,172.30.13.76:6382,172.30.13.76:6383,172.30.13.76:6384,172.30.13.76:6385
+      nodes: 114.114.114.114:6380,114.114.114.114:6381,114.114.114.114:6382,114.114.114.114:6383,114.114.114.114:6384,114.114.114.114:6385
       maxRedirects: 6
       timeout: 2000  # 读取超时时间,ms
       password:
@@ -15,9 +15,9 @@ spring:
         maxTotal: 200
         maxWaitMillis: 1000
 #    lettuce:
-#      host: 172.30.13.76
-#      port: 6386
-#      password: beike2018
+#      host: localhost
+#      port: 6379
+#      password: kuteredis
 #      poolConfig:
 #        maxActive: 100
 #        maxIdle: 10
