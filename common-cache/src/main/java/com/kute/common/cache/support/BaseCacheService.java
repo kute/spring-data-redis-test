@@ -1,10 +1,10 @@
 package com.kute.common.cache.support;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.*;
 import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.Resource;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
@@ -15,12 +15,11 @@ import java.util.concurrent.TimeUnit;
 @Component
 public class BaseCacheService {
 
-
-    @Autowired(required = false)
-    protected RedisTemplate<String, String> redisTemplate;
+    @Resource(name = "lettuceRedisTemplate")
+    protected RedisTemplate<String, String> lettuceRedisTemplate;
 
     public String getKV(String key) {
-        return redisTemplate.opsForValue().get(key);
+        return lettuceRedisTemplate.opsForValue().get(key);
     }
 
     public void setKV(String key, String value) {
@@ -40,19 +39,19 @@ public class BaseCacheService {
     }
 
     public Long del(List<String> keyList) {
-        return redisTemplate.delete(keyList);
+        return lettuceRedisTemplate.delete(keyList);
     }
 
     public Boolean del(String key) {
-        return redisTemplate.delete(key);
+        return lettuceRedisTemplate.delete(key);
     }
 
     public Boolean exists(String key) {
-        return redisTemplate.hasKey(key);
+        return lettuceRedisTemplate.hasKey(key);
     }
 
     public Set<String> keys(String pattern) {
-        return redisTemplate.keys(pattern);
+        return lettuceRedisTemplate.keys(pattern);
     }
 
     public void setNullKey(String nullKey) {
@@ -64,35 +63,35 @@ public class BaseCacheService {
     }
 
     public ValueOperations<String, String> opsForValue() {
-        return redisTemplate.opsForValue();
+        return lettuceRedisTemplate.opsForValue();
     }
 
     public HashOperations<String, String, String> opsForHash() {
-        return redisTemplate.opsForHash();
+        return lettuceRedisTemplate.opsForHash();
     }
 
     public ZSetOperations<String, String> opsForZSet() {
-        return redisTemplate.opsForZSet();
+        return lettuceRedisTemplate.opsForZSet();
     }
 
     public SetOperations<String, String> opsForSet() {
-        return redisTemplate.opsForSet();
+        return lettuceRedisTemplate.opsForSet();
     }
 
     public ClusterOperations<String, String> opsForCluster() {
-        return redisTemplate.opsForCluster();
+        return lettuceRedisTemplate.opsForCluster();
     }
 
     public RedisSerializer<?> getKeySerializer() {
-        return redisTemplate.getKeySerializer();
+        return lettuceRedisTemplate.getKeySerializer();
     }
 
     public RedisSerializer<?> getHashKeySerializer() {
-        return redisTemplate.getHashKeySerializer();
+        return lettuceRedisTemplate.getHashKeySerializer();
     }
 
     public RedisSerializer<?> getHashValueSerializer() {
-        return redisTemplate.getHashValueSerializer();
+        return lettuceRedisTemplate.getHashValueSerializer();
     }
 
     public byte[] rawKey(Object key) {
@@ -120,7 +119,7 @@ public class BaseCacheService {
     }
 
     public byte[] rawValue(Object value) {
-        final RedisSerializer serializer = redisTemplate.getValueSerializer();
+        final RedisSerializer serializer = lettuceRedisTemplate.getValueSerializer();
         if (serializer == null && (value instanceof byte[])) {
             return (byte[]) (byte[]) value;
         }
@@ -128,7 +127,7 @@ public class BaseCacheService {
     }
 
     public void expired(String key, long time, TimeUnit timeUnit) {
-        redisTemplate.expire(key, time, timeUnit);
+        lettuceRedisTemplate.expire(key, time, timeUnit);
     }
 
 }

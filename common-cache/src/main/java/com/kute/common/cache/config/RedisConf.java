@@ -1,5 +1,6 @@
 package com.kute.common.cache.config;
 
+import com.alibaba.fastjson.JSONObject;
 import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
@@ -95,7 +96,7 @@ public class RedisConf {
     @ConditionalOnBean(value = RedisLettuceClusterProperties.class)
     public LettuceConnectionFactory lettuceClusterConnectionFactory() {
         RedisLettuceClusterProperties redisLettuceClusterProperties = lettuceClusterProperties();
-        LOGGER.info("Init redis lettuceClusterConnectionFactory with properties:{}", redisLettuceClusterProperties.toString());
+        LOGGER.info("Init redis lettuceClusterConnectionFactory with properties:{}", JSONObject.toJSONString(redisLettuceClusterProperties));
 
         Map<String, Object> map = Maps.newHashMap(
                 ImmutableMap.of("spring.redis.cluster.nodes", redisLettuceClusterProperties.getNodes(),
@@ -116,7 +117,7 @@ public class RedisConf {
         return new LettuceConnectionFactory(redisClusterConfiguration, clientPollConfig);
     }
 
-    @Bean
+    @Bean(name = "lettuceRedisTemplate")
     @ConditionalOnBean(value = RedisLettuceClusterProperties.class)
     public RedisTemplate<String, String> redisTemplateForLettuceCluster() {
 
@@ -158,7 +159,7 @@ public class RedisConf {
         return new LettuceConnectionFactory(configuration, clientPollConfig);
     }
 
-    @Bean
+    @Bean(name = "lettuceRedisTemplate")
     @ConditionalOnBean(value = RedisLettuceProperties.class)
     public RedisTemplate<String, String> redisTemplateForLettuce() {
 
