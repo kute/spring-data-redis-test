@@ -3,9 +3,9 @@ spring:
     name: spring-data-redis-test
   redis:
 #    type: REDIS_CLUSTER
-#    clientType: LETTUCE
+    clientType: LETTUCE
     lettucecluster:
-      nodes: 114.114.114.114:7000,114.114.114.114:7001,114.114.114.114:7002,114.114.114.114:7003,114.114.114.114:7004,114.114.114.114:7005
+      nodes: 192.168.1.4:7000,192.168.1.4:7001,192.168.1.4:7002,192.168.1.4:7003,192.168.1.4:7004,192.168.1.4:7005
       maxRedirects: 1
       timeout: 2000  # 读取超时时间,ms
       password:
