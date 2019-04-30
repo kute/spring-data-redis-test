@@ -14,6 +14,8 @@ public class RedissonCacheService {
     private RedissonClient redissonClient;
     @Autowired
     private MyRedissonReactiveClient myRedissonReactiveClient;
+    @Autowired
+    private MyRedissonRxClient myRedissonRxClient;
 
     public void test() {
     }

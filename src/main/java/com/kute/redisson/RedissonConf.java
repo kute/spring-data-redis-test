@@ -27,4 +27,12 @@ public class RedissonConf {
         return new MyRedissonReactiveClient(config);
     }
 
+    @Bean
+    @ConditionalOnMissingBean(RedissonReactiveClient.class)
+    public MyRedissonRxClient myRedissonRxClient(RedissonClient redissonClient) {
+        LOGGER.info("Init redissonRxClient ...");
+        Config config = redissonClient.getConfig();
+        return new MyRedissonRxClient(config);
+    }
+
 }
