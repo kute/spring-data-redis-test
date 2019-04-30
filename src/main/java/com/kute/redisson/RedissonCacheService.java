@@ -1,7 +1,6 @@
 package com.kute.redisson;
 
 import org.redisson.api.RedissonClient;
-import org.redisson.api.RedissonReactiveClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +16,6 @@ public class RedissonCacheService {
     private MyRedissonReactiveClient myRedissonReactiveClient;
 
     public void test() {
-
     }
 
 }
