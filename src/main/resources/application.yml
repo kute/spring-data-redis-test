@@ -1,19 +1,22 @@
+server:
+  port: 8090
+
 spring:
   application:
     name: spring-data-redis-test
   redis:
-#    type: REDIS_CLUSTER
+    type: REDIS_CLUSTER
     clientType: LETTUCE
-    lettucecluster:
-      nodes: 192.168.1.4:7000,192.168.1.4:7001,192.168.1.4:7002,192.168.1.4:7003,192.168.1.4:7004,192.168.1.4:7005
-      maxRedirects: 1
-      timeout: 2000  # 读取超时时间,ms
-      password:
-      poolConfig:
-        minIdle: 5
-        maxIdle: 20
-        maxTotal: 200
-        maxWaitMillis: 1000
+#    lettucecluster:
+#      nodes: 10.39.16.7:7000,10.39.16.7:7001,10.39.16.7:7002,10.39.16.7:7003,10.39.16.7:7004,10.39.16.7:7005
+#      maxRedirects: 1
+#      timeout: 2000  # 读取超时时间,ms
+#      password:
+#      poolConfig:
+#        minIdle: 5
+#        maxIdle: 20
+#        maxTotal: 200
+#        maxWaitMillis: 1000
 #    lettuce:
 #      host: localhost
 #      port: 6379
@@ -23,5 +26,31 @@ spring:
 #        maxIdle: 10
 #        minIdle: 1
 #        timeout: 3000
-server:
-  port: 8090
+
+    # 此配置是  redisson-spring-boot-starter 依赖的配置
+    redisson:
+      config: "classpath:redisson.yml"
+
+# 如下是 redisson-spring-boot2-starter 依赖的redisson 配置
+#redisson:
+#  type: cluster
+#  codec: kryo
+#  # master-slave模式
+#  master-slave:
+#    client-name: spring-data-redis-test
+#    connect-timeout: 3000
+#    database: 0
+#    load-balancer: round_robin
+#    master-address: redis://localhost:6379
+#    master-connection-pool-size: 100
+#    password: kuteredis
+#    slave-addresses: redis://localhost:6379
+#    slave-connection-pool-size: 100
+#  # cluster 模式
+#  cluster:
+#    client-name: spring-data-redis-test
+#    load-balancer: round_robin
+#    master-connection-minimum-idle-size: 32
+#    node-addresses: redis://10.39.16.7:7000,redis://10.39.16.7:7001,redis://10.39.16.7:7002,redis://10.39.16.7:7003,redis://10.39.16.7:7004,redis://10.39.16.7:7005
+
+# 如上是 redisson-spring-boot2-starter 依赖的redisson 配置

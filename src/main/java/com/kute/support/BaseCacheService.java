@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit;
 @Component
 public class BaseCacheService {
 
-    @Resource(name = "lettuceRedisTemplate")
+//    @Resource(name = "lettuceRedisTemplate")
     protected RedisTemplate<String, String> lettuceRedisTemplate;
 
     public String getKV(String key) {

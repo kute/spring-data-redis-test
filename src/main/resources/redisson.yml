@@ -1,0 +1,44 @@
+# 见 org.redisson.config.Config
+
+codec: !<org.redisson.client.codec.StringCodec> {}
+nettyThreads: 40
+threads: 20
+
+# master-slave 模式
+# org.redisson.config.MasterSlaveServersConfig
+#masterSlaveServersConfig:
+#  idleConnectionTimeout: 10000
+#  pingTimeout: 1000
+#  connectTimeout: 3000
+#  clientName: spring-data-redis-test
+#  loadBalancer: !<org.redisson.connection.balancer.RoundRobinLoadBalancer> {}
+#  masterConnectionPoolSize: 100
+#  slaveConnectionPoolSize: 100
+#  readMode: SLAVE
+#  masterAddress: redis://localhost:6379
+#  slaveAddresses:
+#    - redis://localhost:6379
+#  password: kuteredis
+#  database: 0
+
+# cluster 模式
+# org.redisson.config.ClusterServersConfig
+clusterServersConfig:
+  idleConnectionTimeout: 10000
+  pingTimeout: 1000
+  connectTimeout: 3000
+  clientName: spring-data-redis-test
+  loadBalancer: !<org.redisson.connection.balancer.RoundRobinLoadBalancer> {}
+  masterConnectionPoolSize: 100
+  slaveConnectionPoolSize: 100
+  readMode: SLAVE
+  nodeAddresses:
+    - "reids://10.39.16.7:7000"
+    - "reids://10.39.16.7:7001"
+    - "reids://10.39.16.7:7002"
+    - "reids://10.39.16.7:7003"
+    - "reids://10.39.16.7:7004"
+    - "reids://10.39.16.7:7005"
+  scanInterval: 1000
+
+

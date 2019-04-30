@@ -4,7 +4,7 @@
 https://docs.spring.io/spring-data/data-redis/docs/current/reference/html
 
 
-1、键空间
+### 1、键空间
 
 http://redisdoc.com/topic/notification.html
 
@@ -22,8 +22,12 @@ http://redisdoc.com/topic/notification.html
 - e：驱逐事件（当key在内存满了被清除时生成）
 - A：g$lshzxe的别名，因此”AKE”意味着所有的事件
 
-2、响应式 redis- reactive reids
+### 2、响应式 redis- reactive reids
 
 见：`https://github.com/kute/pure-webflux-test`中的`com.kute.webflux.config.redis`
 
 
+### 3、spring boot redisson
+
+https://github.com/redisson/redisson/tree/master/redisson-spring-boot-starter
+https://github.com/drtrang/redisson-spring-boot

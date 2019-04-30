@@ -90,6 +90,23 @@
             <artifactId>commons-pool2</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.redisson</groupId>
+            <artifactId>redisson-spring-boot-starter</artifactId>
+            <version>3.10.6</version>
+        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.github.drtrang</groupId>-->
+            <!--<artifactId>redisson-spring-boot2-starter</artifactId>-->
+            <!--<version>1.2.5</version>-->
+        <!--</dependency>-->
+
 	</dependencies>
 
 	<build>
